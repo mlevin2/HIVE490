@@ -1,0 +1,54 @@
+title: "HIVE 490"
+tagline: "Beekeeping Updates from the Hives at Mt. Trashmore"
+description: >-
+  Beemail: periodic beekeeping updates from HIVE 490 at Mt. Trashmore —
+  hive inspections, honey harvests, and notes from the apiary.
+author: Marshall Levin
+
+# Structured-data logo (schema.org). The default social-share (Open Graph/
+# Twitter) image is applied per-page below via `defaults`, since
+# jekyll-seo-tag only reads `image` from the page itself, not site config.
+logo: /assets/images/social-share.png
+
+# Site URL — used for SEO tags, sitemap, and the RSS feed Mailchimp reads from.
+url: "https://hive490.buzz"
+baseurl: ""
+
+# Mailchimp signup form — replace with your hosted signup form URL once
+# you've created your Audience (see README.md for setup steps).
+mailchimp_signup_url: "https://example.com/replace-with-your-mailchimp-signup-url"
+
+permalink: /:year/:month/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  posts_limit: 20
+
+# No comments anywhere on this site — intentional, see README.md.
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/social-share.png
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - img/
+  - vendor/
+  - node_modules/

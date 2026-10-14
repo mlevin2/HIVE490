@@ -1,0 +1,11 @@
+{
+  "name": "HIVE 490",
+  "short_name": "HIVE 490",
+  "icons": [
+    { "src": "/assets/images/android-chrome-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/images/android-chrome-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#59AD40",
+  "background_color": "#FFF8E6",
+  "display": "standalone"
+}

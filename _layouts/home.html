@@ -1,0 +1,26 @@
+---
+layout: default
+---
+<h1 class="page-title">{{ page.title | default: "Beemail" }}</h1>
+{% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
+
+<div class="subscribe-banner">
+  <p>Get Beemail in your inbox — occasional updates from the hives, at most once a month.</p>
+  <a class="btn" href="{{ site.mailchimp_signup_url }}" target="_blank" rel="noopener">Subscribe</a>
+</div>
+
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li class="post-list__item">
+    <span class="post-list__date">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    </span>
+    <h2 class="post-list__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    {% if post.excerpt %}<p class="post-list__excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+{% if site.posts.size == 0 %}
+<p>No Beemail posts yet — check back soon.</p>
+{% endif %}
