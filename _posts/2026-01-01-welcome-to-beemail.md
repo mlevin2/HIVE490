@@ -10,9 +10,9 @@ over the course of a season.
 
 A few notes on what to expect:
 
-- **Frequency:** no more than once a month, usually tied to something
+- **Frequency:** roughly once a month, usually tied to something
   actually happening at the hives.
-- **Format:** short, photo-heavy updates rather than long essays.
+- **Format:** usually short updates.
 - **Where it lives:** every update is posted here first, and also goes
   out by email to subscribers.
 
