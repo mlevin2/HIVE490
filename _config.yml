@@ -14,9 +14,9 @@ logo: /assets/images/social-share.png
 url: "https://hive490.buzz"
 baseurl: ""
 
-# Mailchimp signup form — replace with your hosted signup form URL once
-# you've created your Audience (see README.md for setup steps).
-mailchimp_signup_url: "https://example.com/replace-with-your-mailchimp-signup-url"
+# Mailchimp signup landing page — drives every "Subscribe" link/button
+# across the site. See README.md for full Mailchimp setup steps.
+mailchimp_signup_url: "https://mailchi.mp/429f998335be/hive-490-beemail"
 
 permalink: /:year/:month/:title/
 
