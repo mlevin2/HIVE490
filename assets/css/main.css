@@ -119,11 +119,28 @@ h1, h2, h3, h4 {
 
 .page-main { padding: 2.5rem 0 3rem; }
 
-.page-title { font-size: 2rem; margin-bottom: 0.25rem; }
+.page-title { font-size: 2rem; margin-bottom: 0; }
 
 .page-subtitle { color: var(--color-muted); margin-top: 0; }
 
 /* ---------- Subscribe banner ---------- */
+
+.subscribe-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin: 0 0 2.25rem;
+}
+
+.subscribe-row__left {
+  flex: 1 1 320px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.85rem;
+}
 
 .subscribe-banner {
   display: flex;
@@ -135,7 +152,12 @@ h1, h2, h3, h4 {
   border: 1px solid var(--color-border);
   border-radius: 12px;
   padding: 1.1rem 1.4rem;
-  margin: 1.5rem 0 2.25rem;
+}
+
+.subscribe-row__logo {
+  flex-shrink: 0;
+  width: 260px;
+  height: 260px;
 }
 
 .subscribe-banner p { margin: 0; min-width: 0; }
@@ -229,5 +251,8 @@ h1, h2, h3, h4 {
 @media (max-width: 540px) {
   .site-header__inner { justify-content: center; text-align: center; }
   .site-brand { flex-direction: column; text-align: center; max-width: 100%; }
-  .subscribe-banner { flex-direction: column; align-items: flex-start; }
+  .subscribe-row { flex-direction: column-reverse; align-items: center; }
+  .subscribe-row__left { align-items: center; text-align: center; width: 100%; }
+  .subscribe-banner { flex-direction: column; align-items: flex-start; width: 100%; }
+  .subscribe-row__logo { width: 150px; height: 150px; }
 }

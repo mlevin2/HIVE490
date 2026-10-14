@@ -1,12 +1,18 @@
 ---
 layout: default
 ---
-<h1 class="page-title">{{ page.title | default: "Beemail" }}</h1>
-{% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
+<div class="subscribe-row">
+  <div class="subscribe-row__left">
+    <h1 class="page-title">{{ page.title | default: "Beemail" }}</h1>
+    {% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
 
-<div class="subscribe-banner">
-  <p>Get Beemail in your inbox — occasional updates from the hives, at most once a month.</p>
-  <a class="btn" href="{{ site.mailchimp_signup_url }}" target="_blank" rel="noopener">Subscribe</a>
+    <div class="subscribe-banner">
+      <p>Get Beemail in your inbox — occasional updates from the hives, roughly once a month.</p>
+      <a class="btn" href="{{ site.mailchimp_signup_url }}" target="_blank" rel="noopener">Subscribe</a>
+    </div>
+  </div>
+
+  <img class="subscribe-row__logo" src="{{ '/assets/images/logo.svg' | relative_url }}" alt="HIVE 490 logo — a bee wearing a CERT t-shirt, our mascot at the Mt. Trashmore apiary" width="260" height="260">
 </div>
 
 <ul class="post-list">
