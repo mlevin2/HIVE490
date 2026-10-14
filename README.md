@@ -143,6 +143,11 @@ email automatically whenever a new post appears in it.
    - Send frequency: "As new items are published" — at most-monthly
      posting, the polling delay (Mailchimp checks the feed roughly hourly
      to daily on the free tier) is a total non-issue.
+   - In the RSS content block, choose **full content**, not the
+     truncated/excerpt option (Mailchimp defaults to truncated). The feed
+     already carries each post's full content — `jekyll-feed` doesn't
+     excerpt it — so this just controls what Mailchimp actually displays
+     in the email.
    - Design the email template once — pull in the site's colors (`#59AD40`
      green, `#FFC72C` gold, `#FFF8E6` cream background) and set the font to
      something close to Jost if Mailchimp's font picker has it, otherwise
