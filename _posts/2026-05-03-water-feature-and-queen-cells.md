@@ -36,6 +36,6 @@ My video editor is working on a montage of some clips I recorded last time, plus
 
 In some of them, I am inspecting the top box ("super"), which is mainly for honey storage. In a few, you can see the queen cells. They are built perpendicular to the regular comb and look kind of like peanuts. I don't know why they put the queen cells in the super. In some of the other clips, I am finishing the inspection of the lower box ("brood box"), which is normally where the baby bees are. The workers cap the cells with wax to keep the honey inside or to protect the developing bees. The cell is kept open when the bee is a larva so it can be fed. When it becomes a pupa, the cell gets capped. Bees metamorphose like butterflies and then chew open the cap and emerge in adult form.
 
-![Screenshot from the inspection video montage](/assets/images/2026-05-03-video-screenshot.png)
+![Screenshot from the inspection video montage](/assets/images/2026-05-03-video-screenshot.jpg)
 
 🐝🐝🐝
