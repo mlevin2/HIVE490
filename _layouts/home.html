@@ -3,7 +3,7 @@ layout: default
 ---
 <div class="subscribe-row">
   <div class="subscribe-row__left">
-    <h1 class="page-title">{{ page.title | default: site.title }}</h1>
+    <h1 class="page-title">{{ page.title | default: "Beemail" }}</h1>
     {% if page.subtitle %}<p class="page-subtitle">{{ page.subtitle }}</p>{% endif %}
 
     <div class="subscribe-banner">
