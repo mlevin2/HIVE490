@@ -74,7 +74,9 @@ see below.
 
 ## Repo setup / first deploy
 
-Not yet done for this repo. Once you're ready:
+Already done — `mlevin2/HIVE490` is live on `main`, deploying from the
+branch root. Keeping the steps here as a reference in case this ever
+needs to be recreated (a fork, a disaster-recovery scenario, etc.):
 
 ```
 gh repo create mlevin2/HIVE490 --public --source=. --remote=origin --push
@@ -85,8 +87,8 @@ Deploy from a branch**, branch `main`, folder `/ (root)`.
 
 ### Custom domain (hive490.buzz)
 
-The `CNAME` file in this repo already points Pages at `hive490.buzz`. You
-still need to point the domain's DNS at GitHub:
+Live and working, HTTPS enforced. The `CNAME` file in this repo points
+Pages at `hive490.buzz`; DNS is set at Hover (the registrar):
 
 - **Apex domain (`hive490.buzz`)** — four `A` records pointing at GitHub
   Pages' IPs:
@@ -96,13 +98,21 @@ still need to point the domain's DNS at GitHub:
   185.199.110.153
   185.199.111.153
   ```
-- **`www` subdomain** (optional, if you want `www.hive490.buzz` to also
-  work) — a `CNAME` record pointing to `mlevin2.github.io`.
+- **`www` subdomain** — a `CNAME` record pointing to `mlevin2.github.io`.
 
-Set these with whoever you registered `hive490.buzz` through. After DNS
-propagates (can take a few hours), go to **Settings → Pages** on GitHub and
-check **Enforce HTTPS** once it becomes available — GitHub provisions a
-free certificate automatically.
+**If HTTPS ever gets stuck again** (certificate not issuing even though
+DNS resolves correctly — this happened once, taking ~16 hours before a
+fix): clear and re-save the custom domain to force GitHub to retry
+certificate provisioning from scratch, either in **Settings → Pages**
+(clear the field, save, wait, type the domain back in, save) or via:
+```
+gh api repos/mlevin2/HIVE490/pages -X PUT -F cname=''
+# wait a few seconds
+gh api repos/mlevin2/HIVE490/pages -X PUT -F cname='hive490.buzz'
+```
+This is especially likely if the custom domain was ever saved in Pages
+settings *before* DNS was fully pointed at GitHub — the first
+certificate attempt fails and doesn't appear to retry on its own.
 
 ## SEO
 
@@ -130,40 +140,62 @@ email automatically whenever a new post appears in it.
 
 ### One-time setup
 
+Already done. Steps below as a reference/runbook — e.g. if this ever
+needs to be rebuilt under a different account or domain.
+
 1. **Create a Mailchimp account** (free tier). At under 50 subscribers and
    at most one send a month, you're nowhere near the free plan's contact
    or send limits.
 2. **Create an Audience** (Mailchimp's term for a mailing list).
-3. **Create a signup form**: Audience → Signup forms → either the
-   Mailchimp-hosted form or an embedded form on another page. Copy its
-   URL.
+3. **Create a signup page**: Audience → **Forms** → **Create Form** →
+   **Signup landing page** (not Popup form or Embedded form — those don't
+   give a standalone URL to link to). Copy its published URL.
 4. Put that URL in `_config.yml`:
    ```yaml
    mailchimp_signup_url: "https://your-actual-signup-form-url"
    ```
    This single config value drives every "Subscribe" link/button across
    the site (header, footer, homepage banner, bottom of every post).
-5. **Create an RSS-Driven Campaign**: Campaigns → Create → look for "RSS"
-   as the trigger/automation type (Mailchimp's UI has moved this around
-   over the years — if you don't see it under Campaigns, check
-   Automations → Classic Automations, or search "RSS" in Mailchimp's help
-   search from within your account).
+   Remember to click **Publish** on the landing page itself — saving a
+   draft isn't enough to make the URL actually work.
+5. **Authenticate the sending domain** (Audience → Settings → Domains →
+   Authenticate): without this, Mailchimp can still send using a
+   `beemail@yourdomain` From address once you've verified it (clicking a
+   confirmation link), but deliverability suffers without full DKIM
+   authentication. Mailchimp may be able to connect directly to some
+   registrars (it did for Hover here) and add the DNS records itself; if
+   not, it'll show you the CNAME records to add manually.
+6. **Create the RSS automation**: Automations → look for a pre-built
+   journey called **"Share blog updates via RSS"** (not under regular
+   Campaigns — current Mailchimp nests this under Automations).
    - RSS feed URL: `https://hive490.buzz/feed.xml`
-   - Send frequency: "As new items are published" — at most-monthly
-     posting, the polling delay (Mailchimp checks the feed roughly hourly
-     to daily on the free tier) is a total non-issue.
-   - In the RSS content block, choose **full content**, not the
-     truncated/excerpt option (Mailchimp defaults to truncated). The feed
-     already carries each post's full content — `jekyll-feed` doesn't
-     excerpt it — so this just controls what Mailchimp actually displays
-     in the email.
+   - Send frequency: pick **daily** and any time of day — there's no
+     literal "send immediately when published" option, but daily polling
+     is indistinguishable from instant at a monthly posting cadence.
+   - In the RSS content block, switch from the default **Excerpts**
+     preset to **Full Posts** — this swaps in the `*|RSSITEM:CONTENT_FULL|*`
+     merge tag instead of a truncated version. The feed always carries
+     full content (`jekyll-feed` doesn't excerpt it); this setting
+     controls what Mailchimp actually *displays*.
+   - **Subject line**: use `*|RSSITEM:TITLE|*` (the individual post's
+     title), not `*|RSSFEED:TITLE|*` (the site's name — same on every
+     send, which defeats the point of a dynamic subject).
    - Design the email template once — pull in the site's colors (`#59AD40`
      green, `#FFC72C` gold, `#FFF8E6` cream background) and set the font to
      something close to Jost if Mailchimp's font picker has it, otherwise
      a similar geometric sans. You only do this once; it applies to every
      future post automatically.
    - Send yourself a test before turning it on for real.
-6. Turn the RSS campaign on.
+7. Turn the RSS automation on (there's a "Start" button on the final
+   review screen, not a "Send" button, since this is a recurring
+   automation rather than a one-off campaign).
+
+**Known limitation:** Mailchimp's landing-page signup form doesn't
+render a required-field asterisk next to Email even when it's marked
+required (and the other fields aren't) — this appears to be a platform
+quirk on this specific form type, and the field labels aren't editable
+to work around it by hand. Not worth fighting; a one-line note in the
+page's intro text ("only email is required") covers it if it matters.
 
 ### Ongoing workflow (after setup)
 
