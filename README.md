@@ -56,7 +56,34 @@ every push).
 
    Then reference it with standard Markdown
    (`![alt text](/assets/images/whatever.jpg)`) — always include real alt
-   text, both for accessibility and because it feeds SEO.
+   text, both for accessibility and because it feeds SEO. Every photo is
+   automatically clickable to enlarge in a lightbox (see below), so the
+   default single-image-per-paragraph layout already works well without
+   any extra markup.
+
+   For a nicer layout with more than one photo, two optional patterns:
+
+   - **Wrap text around a photo** — add `{: .float-right }` or
+     `{: .float-left }` right after the image:
+     ```
+     ![Alt text](/assets/images/whatever.jpg){: .float-right }
+     ```
+   - **A row of photos** — wrap them in a `photo-grid` div, with a blank
+     line between each image so they land in separate grid cells:
+     ```
+     <div class="photo-grid" markdown="1">
+
+     ![First photo](/assets/images/one.jpg)
+
+     ![Second photo](/assets/images/two.jpg)
+
+     </div>
+     ```
+
+   Either way, you can give a photo its own caption (shown in the
+   lightbox, separate from its alt text) with Markdown's optional title
+   string: `![Alt text](/assets/images/whatever.jpg "Caption shown in
+   the lightbox")`.
 4. Preview with `make serve`, then commit and push to `main`:
 
    ```
@@ -222,6 +249,7 @@ _includes/        head.html (SEO/meta/favicons), header.html, footer.html
 _posts/           Beemail entries, one file per post
 assets/css/       Hand-written CSS (no framework, no Sass pipeline)
 assets/images/    Logo, favicons, social-share image, post images
+assets/js/        lightbox.js — vanilla JS, no dependencies
 index.md          Homepage (uses home.html layout)
 about.md          About page
 CNAME             Custom domain for GitHub Pages

@@ -209,12 +209,13 @@ h1, h2, h3, h4 {
 
 .post__meta { color: var(--color-muted); font-size: 0.9rem; margin: 0; }
 
-.post__content h2 { margin-top: 2rem; }
+.post__content h2 { clear: both; margin-top: 2rem; }
 
 .post__content img {
   max-width: 100%;
   height: auto;
   border-radius: 10px;
+  cursor: zoom-in;
 }
 
 .post__content figcaption {
@@ -224,7 +225,101 @@ h1, h2, h3, h4 {
   margin-top: 0.4rem;
 }
 
+/* Float an image so text wraps around it: add {: .float-right } or
+   {: .float-left } after a markdown image. Stacks full-width on mobile. */
+.post__content img.float-right,
+.post__content img.float-left {
+  max-width: 45%;
+}
+
+.post__content img.float-right {
+  float: right;
+  margin: 0.3rem 0 1rem 1.5rem;
+}
+
+.post__content img.float-left {
+  float: left;
+  margin: 0.3rem 1.5rem 1rem 0;
+}
+
+/* A row/grid of photos: wrap markdown images in
+   <div class="photo-grid" markdown="1"> ... </div>, with a blank line
+   between each image so they land in separate grid cells. */
+.post__content .photo-grid {
+  clear: both;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.post__content .photo-grid p { margin: 0; }
+
+.post__content .photo-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
 .post__back { margin-top: 2.5rem; }
+
+/* ---------- Lightbox ---------- */
+
+.lightbox {
+  padding: 0;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+  max-width: min(92vw, 1100px);
+  max-height: 92vh;
+}
+
+.lightbox::backdrop {
+  background: rgba(26, 26, 26, 0.85);
+}
+
+.lightbox__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--color-surface);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.lightbox__img {
+  display: block;
+  max-width: min(92vw, 1100px);
+  max-height: 78vh;
+  width: auto;
+  height: auto;
+}
+
+.lightbox__caption {
+  padding: 0.85rem 1.2rem;
+  font-size: 0.95rem;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(26, 26, 26, 0.6);
+  color: #fff;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close:hover { background: rgba(26, 26, 26, 0.85); }
 
 /* ---------- Footer ---------- */
 
@@ -255,4 +350,11 @@ h1, h2, h3, h4 {
   .subscribe-row__left { align-items: center; text-align: center; width: 100%; }
   .subscribe-banner { flex-direction: column; align-items: flex-start; width: 100%; }
   .subscribe-row__logo { width: 150px; height: 150px; }
+
+  .post__content img.float-right,
+  .post__content img.float-left {
+    float: none;
+    max-width: 100%;
+    margin: 0.3rem 0 1rem;
+  }
 }
