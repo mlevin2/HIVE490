@@ -6,3 +6,6 @@ vendor/
 .bundle/
 Gemfile.lock
 .DS_Store
+
+# Local-only project notes/context for Claude Code — not for the public repo
+CLAUDE.local.md
