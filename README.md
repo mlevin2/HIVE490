@@ -44,8 +44,17 @@ every push).
    ---
    ```
 
-3. Write the body in Markdown below the front matter. Add images to
-   `assets/images/` and reference them with standard Markdown
+3. Write the body in Markdown below the front matter. Before adding a
+   photo to `assets/images/`, run it through `make optimize-image` to
+   resize it down and strip metadata (including GPS location) — phone
+   photos are often several MB and don't need to be that large on the
+   web:
+
+   ```
+   make optimize-image SRC=~/Desktop/photo.jpg DEST=assets/images/2026-11-02-example.jpg
+   ```
+
+   Then reference it with standard Markdown
    (`![alt text](/assets/images/whatever.jpg)`) — always include real alt
    text, both for accessibility and because it feeds SEO.
 4. Preview with `make serve`, then commit and push to `main`:
