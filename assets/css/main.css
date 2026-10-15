@@ -86,7 +86,7 @@ h1, h2, h3, h4 {
 }
 
 .site-brand__tagline {
-  font-size: 0.95rem;
+  font-size: 1.1rem;
   color: var(--color-muted);
   min-width: 0;
 }
