@@ -9,3 +9,4 @@ Gemfile.lock
 
 # Local-only project notes/context for Claude Code — not for the public repo
 CLAUDE.local.md
+.claude/
