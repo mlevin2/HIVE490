@@ -7,7 +7,7 @@ Hi everyone,
 
 Time for another bee update. And sorry in advance, I didn't get a chance to get any good pictures.
 
-I did an inspection on May 10. Hive A (the one that had to re-queen itself) was sparsely populated. There were no longer any queen cells, so this most likely means that one emerged and took out the competition. I did not see any eggs or larvae and I was about to give up on finding the queen, but there she was on the last frame. I went to get the camera and when I came back, I couldn't find her again. Bee Mentor Steve (hereafter, "Steve") said that she might not have been on a mating flight yet (the weather hadn't been great).
+I did an inspection on May 10. Hive A (the one that had to re-queen itself) was sparsely populated. There were no longer any queen cells, so this most likely means that one emerged and took out the competition. I did not see any eggs or larvae and I was about to give up on finding the queen, but there she was on the last frame. I went to get the camera and when I came back, I couldn't find her again. Bee-Mentor Steve (hereafter, "Steve") said that she might not have been on a mating flight yet (the weather hadn't been great).
 
 On May 15, I found Hive A again very sparsely populated, and yet I still couldn't spot the queen. But I did see young larvae (so about 3-4 days old) and some capped brood (they cap the larva cells when they start to pupate at day 9). This suggests that the queen was there and laying. Steve said, "don't worry, give it time" (this will become a recurring theme).
 
