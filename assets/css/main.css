@@ -16,7 +16,7 @@
 
 * { box-sizing: border-box; }
 
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -351,6 +351,7 @@ h1, h2, h3, h4 {
   .site-brand__title { font-size: 1.5rem; }
   .site-brand__tagline { font-size: 0.85rem; }
   .page-title { font-size: 1.6rem; }
+  .post__title { font-size: 1.7rem; }
   .subscribe-row { flex-direction: column-reverse; align-items: center; }
   .subscribe-row__left { align-items: center; text-align: center; width: 100%; }
   .subscribe-banner { flex-direction: column; align-items: flex-start; width: 100%; }
