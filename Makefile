@@ -5,13 +5,18 @@ install:
 	bundle config set --local path 'vendor/bundle'
 	bundle install
 
-# Preview the site locally at http://localhost:4000 (rebuilds on save)
+# Preview the site locally at http://localhost:4000 (rebuilds on save).
+# Merges in _config_dev.yml, which blanks out site.url so post images
+# don't link out to the live production domain during local preview —
+# GitHub Pages builds with _config.yml alone, so it always gets the real
+# https://hive490.buzz URLs.
 serve:
-	bundle exec jekyll serve --livereload
+	bundle exec jekyll serve --livereload --config _config.yml,_config_dev.yml
 
-# Build the static site into _site/ without serving it
+# Build the static site into _site/ without serving it (same local override
+# as `serve` — see above)
 build:
-	bundle exec jekyll build
+	bundle exec jekyll build --config _config.yml,_config_dev.yml
 
 # Remove generated files
 clean:

@@ -13,7 +13,7 @@ On May 15, I found Hive A again very sparsely populated, and yet I still couldn'
 
 As for Hive B (the very active one), on May 10, there was a lot of activity. Lots of honey, lots of young larvae and capped brood. I couldn't spot the queen, even though we had marked her previously with a paint marker, but there's good evidence that she was there. I noticed a lot of "bearding" (when a lot of bees congregate and hang from the underside of the entrance, making a "beard" formation). This could be due to the heat or due to overcrowding.
 
-![The two hives before swapping positions](/assets/images/2026-05-19-hives-before.jpg)
+![The two hives before swapping positions]({{ site.url }}/assets/images/2026-05-19-hives-before.jpg)
 
 I asked Steve for advice and his answer was, of course, "don't worry, give it time." There is some new brood, so I am hopeful that the population starts to rebound in the next week or so as some of that brood emerges.
 
@@ -35,7 +35,7 @@ So I have switched positions, and also labeled the hives better. I also added an
 
 The photo above is the "before." The photo below is the "after."
 
-![The two hives after swapping positions, now labeled Hive B and Hive A](/assets/images/2026-05-19-hives-after.jpg)
+![The two hives after swapping positions, now labeled Hive B and Hive A]({{ site.url }}/assets/images/2026-05-19-hives-after.jpg)
 
 As you can see, they are now labeled, with Hive B on the left and Hive A on the right, and Hive B now has an additional "expansion pack."
 

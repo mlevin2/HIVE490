@@ -54,36 +54,53 @@ every push).
    make optimize-image SRC=~/Desktop/photo.jpg DEST=assets/images/2026-11-02-example.jpg
    ```
 
-   Then reference it with standard Markdown
-   (`![alt text](/assets/images/whatever.jpg)`) — always include real alt
-   text, both for accessibility and because it feeds SEO. Every photo is
-   automatically clickable to enlarge in a lightbox (see below), so the
-   default single-image-per-paragraph layout already works well without
-   any extra markup.
+   Then reference it with standard Markdown, but use `{{ site.url }}`
+   rather than a plain `/` path —
+   `![alt text]({{ site.url }}/assets/images/whatever.jpg)` — always
+   include real alt text, both for accessibility and because it feeds
+   SEO.
+
+   **Why `{{ site.url }}` and not just `/assets/images/...`:** a post's
+   content also gets syndicated into `feed.xml`, which is what the
+   Mailchimp email (and its web archive view) renders from. A root-relative
+   path like `/assets/images/whatever.jpg` resolves fine on the actual
+   site, but breaks anywhere else the content gets served from — email
+   clients and Mailchimp's own archive pages have no idea what domain
+   "/" is supposed to mean, so the image just 404s. `{{ site.url }}`
+   expands to the real `https://hive490.buzz` on the actual GitHub
+   build, so links and images work correctly everywhere, including in
+   the email. Locally, `make serve`/`make build` merge in
+   `_config_dev.yml`, which blanks `site.url` back to empty — so the
+   exact same source still gives you plain, working root-relative paths
+   in local preview rather than linking out to the live production site.
+
+   Every photo is automatically clickable to enlarge in a lightbox (see
+   below), so the default single-image-per-paragraph layout already
+   works well without any extra markup.
 
    For a nicer layout with more than one photo, two optional patterns:
 
    - **Wrap text around a photo** — add `{: .float-right }` or
      `{: .float-left }` right after the image:
      ```
-     ![Alt text](/assets/images/whatever.jpg){: .float-right }
+     ![Alt text]({{ site.url }}/assets/images/whatever.jpg){: .float-right }
      ```
    - **A row of photos** — wrap them in a `photo-grid` div, with a blank
      line between each image so they land in separate grid cells:
      ```
      <div class="photo-grid" markdown="1">
 
-     ![First photo](/assets/images/one.jpg)
+     ![First photo]({{ site.url }}/assets/images/one.jpg)
 
-     ![Second photo](/assets/images/two.jpg)
+     ![Second photo]({{ site.url }}/assets/images/two.jpg)
 
      </div>
      ```
 
    Either way, you can give a photo its own caption (shown in the
    lightbox, separate from its alt text) with Markdown's optional title
-   string: `![Alt text](/assets/images/whatever.jpg "Caption shown in
-   the lightbox")`.
+   string: `![Alt text]({{ site.url }}/assets/images/whatever.jpg
+   "Caption shown in the lightbox")`.
 4. Preview with `make serve`, then commit and push to `main`:
 
    ```
@@ -244,6 +261,7 @@ don't look right.
 
 ```
 _config.yml       Site settings — title, URL, Mailchimp signup link, plugins
+_config_dev.yml   Local-only override (blanks site.url) merged in by make serve/build
 _layouts/         default.html (shell), home.html (post list), post.html
 _includes/        head.html (SEO/meta/favicons), header.html, footer.html
 _posts/           Beemail entries, one file per post

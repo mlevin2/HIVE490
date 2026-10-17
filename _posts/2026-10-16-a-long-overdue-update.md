@@ -3,7 +3,7 @@ title: "A Long Overdue Update"
 description: "It's been a long time, and a lot has happened!"
 ---
 
-It's been quite a while since my last update. But now I have this lovely [blog](/), and every time I post, you lovely subscribers get an email automatically.
+It's been quite a while since my last update. But now I have this lovely [blog]({{ site.url }}/), and every time I post, you lovely subscribers get an email automatically.
 
 I applied a treatment to cut down on [varroa mites](https://en.wikipedia.org/wiki/Varroa_destructor) (aptly named *Varroa destructor*), little critters that are bad news for bees. I also learned a neat trick to control [small hive beetles](https://en.wikipedia.org/wiki/Small_hive_beetle), another beekeeping pest. If you put small squares of unscented, dry Swiffer sheets in the corners of the boxes, the beetles will get stuck there and not get into the rest of the hive.
 
@@ -11,23 +11,23 @@ This summer, I harvested about two and a half gallons of honey! This batch was a
 
 <div class="photo-grid" markdown="1">
 
-![Honey straining through a mesh filter into a bucket during extraction](/assets/images/2026-06-14-honey-draining.jpg)
+![Honey straining through a mesh filter into a bucket during extraction]({{ site.url }}/assets/images/2026-06-14-honey-draining.jpg)
 
-![Filling buckets with fresh honey from the extractor](/assets/images/2026-06-14-honey-extraction.jpg)
+![Filling buckets with fresh honey from the extractor]({{ site.url }}/assets/images/2026-06-14-honey-extraction.jpg)
 
-![A finished jar of honey, ready for testing](/assets/images/2026-06-16-honey-jar.jpg)
+![A finished jar of honey, ready for testing]({{ site.url }}/assets/images/2026-06-16-honey-jar.jpg)
 
 </div>
 
 During the summer heat wave, I removed the metal outer covers and replaced them with some insulating material to try to keep the temperature down.
 
-![Hives fitted with reflective insulating covers to help beat the summer heat](/assets/images/2026-09-19-reflective-roof.jpg)
+![Hives fitted with reflective insulating covers to help beat the summer heat]({{ site.url }}/assets/images/2026-09-19-reflective-roof.jpg)
 
 I also did some bee yard maintenance this summer. Initially, I just cleared out a bunch of the tall grass and weeds. There were tons of ticks in there! Later, we put down a big tarp and then covered the area with dirt and gravel. This required heavy machinery!
 
-![The bee yard cleared and covered with a tarp, before adding gravel](/assets/images/2026-09-19-tarp-before.jpg "Before")
+![The bee yard cleared and covered with a tarp, before adding gravel]({{ site.url }}/assets/images/2026-09-19-tarp-before.jpg "Before")
 
-![Spreading gravel over the bee yard with a skid steer loader](/assets/images/2026-10-03-gravel-after.jpg "After")
+![Spreading gravel over the bee yard with a skid steer loader]({{ site.url }}/assets/images/2026-10-03-gravel-after.jpg "After")
 
 I say "we" because I'm pleased to announce I have Deputy Beekeeper Bradley, who recently graduated from CERT basic training. He's been a huge help. Now I give all the hard labor to him.
 
@@ -41,9 +41,9 @@ On my last inspection, I actually spotted the queens in both colonies. The queen
 
 <div class="photo-grid" markdown="1">
 
-![The unmarked queen in Hive A, circled](/assets/images/2026-10-09-unmarked-queen-hive-a.jpg "Hive A's unmarked queen")
+![The unmarked queen in Hive A, circled]({{ site.url }}/assets/images/2026-10-09-unmarked-queen-hive-a.jpg "Hive A's unmarked queen")
 
-![The original green-marked queen, still going strong in Hive B, circled](/assets/images/2026-10-09-marked-queen-hive-b.jpg "Hive B's original marked queen")
+![The original green-marked queen, still going strong in Hive B, circled]({{ site.url }}/assets/images/2026-10-09-marked-queen-hive-b.jpg "Hive B's original marked queen")
 
 </div>
 

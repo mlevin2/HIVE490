@@ -7,13 +7,13 @@ Hello again, and sorry for the long delay.
 
 On April 18, I installed a new water feature. Bees like water, but they don't like swimming, so I put some pebbles inside so they have something to stand on. I invented this myself. Not the concept, but the execution.
 
-![New hive water feature with pebbles for bees to land on](/assets/images/2026-05-03-water-feature.jpg)
+![New hive water feature with pebbles for bees to land on]({{ site.url }}/assets/images/2026-05-03-water-feature.jpg)
 
 I also inspected Hive 490A (the one that needs a new queen). I'm not an expert here, but I saw some good signs. I found 4 queen-size cells that were capped with wax. This means, I hope, that there were new enough eggs (within 3 days of being laid by the old queen) to start making a new queen. After 3 days, the egg hatches and the nurse bees feed it a diet of only royal jelly. This is what causes it to grow into a queen. Four seems about right. The colony hedges its bets. A queen takes 16 days to emerge. Whichever one emerges first will take out the competition. I haven't been able to go back and check since it has been too cold on the days I was free. Bee-Mentor Steve says, "now we wait." I will keep you posted!
 
 The ladies of Hive 490B were quite active (that's the one that kept the queen).
 
-![Bees active at the entrance of Hive 490B](/assets/images/2026-05-03-hive-b-activity.jpg)
+![Bees active at the entrance of Hive 490B]({{ site.url }}/assets/images/2026-05-03-hive-b-activity.jpg)
 
 On April 23, I collected 17 frames of honey from the absconded hive. Nobody from the bee club has had time to help me with the extraction yet, so these frames are currently in a big freezer at Fire Station 22.
 
@@ -36,6 +36,6 @@ My video editor is working on a montage of some clips I recorded last time, plus
 
 In some of them, I am inspecting the top box ("super"), which is mainly for honey storage. In a few, you can see the queen cells. They are built perpendicular to the regular comb and look kind of like peanuts. I don't know why they put the queen cells in the super. In some of the other clips, I am finishing the inspection of the lower box ("brood box"), which is normally where the baby bees are. The workers cap the cells with wax to keep the honey inside or to protect the developing bees. The cell is kept open when the bee is a larva so it can be fed. When it becomes a pupa, the cell gets capped. Bees metamorphose like butterflies and then chew open the cap and emerge in adult form.
 
-![Screenshot from the inspection video montage](/assets/images/2026-05-03-video-screenshot.jpg)
+![Screenshot from the inspection video montage]({{ site.url }}/assets/images/2026-05-03-video-screenshot.jpg)
 
 🐝🐝🐝

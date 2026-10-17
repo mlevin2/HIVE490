@@ -1,0 +1,6 @@
+# Local-only override, merged on top of _config.yml by `make serve`/`make build`.
+# Empty url means post content that uses {{ site.url }} (e.g. image paths,
+# so they're absolute URLs in the real feed/email) falls back to plain
+# root-relative paths locally — so local preview doesn't link out to the
+# live production site for every image.
+url: ""
