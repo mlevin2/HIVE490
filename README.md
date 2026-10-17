@@ -314,6 +314,43 @@ The API key path defaults to `~/docs/hive490_mailchimp.txt` (outside
 the repo); override with the `MAILCHIMP_API_KEY_FILE` environment
 variable if it ever moves.
 
+## Debugging phone-only rendering bugs
+
+Some layout bugs only show up on a real phone browser — notably, text
+rendering flush against the screen edge on narrow viewports (fixed
+2026-10-17: `.page-main`'s `padding: 2.5rem 0 3rem` shorthand was
+zeroing out `.wrap`'s horizontal padding on `<main class="wrap
+page-main">`, since both selectors have equal specificity and
+`.page-main` came later in the stylesheet — invisible on desktop,
+where `.wrap`'s `margin: auto` centering still provides a gutter above
+its 760px max-width, but the only source of a side margin below that
+width). Resizing a desktop browser window narrow, or Chrome DevTools'
+device emulation, didn't reproduce it — the fix had to be confirmed on
+an actual device.
+
+For that kind of bug, connect the phone over USB and use the Chrome
+DevTools Protocol directly instead of guessing from screenshots:
+
+1. On the phone: enable Developer Options (Settings → About phone →
+   tap Build number 7 times), then enable USB debugging (Settings →
+   Developer options), connect via USB, and approve the "Allow USB
+   debugging" prompt.
+2. On the Mac: `adb devices -l` to confirm it shows `device` (not
+   `unauthorized`), then `adb forward tcp:9222
+   localabstract:chrome_devtools_remote`.
+3. `curl http://localhost:9222/json` lists every open tab on the
+   phone's Chrome, each with a `webSocketDebuggerUrl`.
+4. Connect to that WebSocket URL (Python's `websockets` library works
+   well) and send CDP commands as JSON-RPC: `Runtime.evaluate` to pull
+   real `getBoundingClientRect()`/`getComputedStyle()` values from the
+   live page, `Page.captureScreenshot` for a true device screenshot,
+   `Page.reload` with `ignoreCache: true` to force a fresh load after
+   a deploy.
+
+This gives real computed values and a real screenshot straight from
+the device — far more reliable than eyeballing a photo or trying to
+simulate narrow viewports locally.
+
 ## Project structure
 
 ```
