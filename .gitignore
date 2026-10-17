@@ -10,3 +10,9 @@ Gemfile.lock
 # Local-only project notes/context for Claude Code — not for the public repo
 CLAUDE.local.md
 .claude/
+
+# Local-only operational tooling (tied to this Mailchimp account's specific
+# audience ID etc.) — not for the public repo. See README for the process
+# this implements; the script itself stays local.
+scripts/
+Makefile.local

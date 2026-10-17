@@ -9,7 +9,10 @@ deploys it.
 
 - **Jekyll**, static site generator, built into GitHub Pages
 - **GitHub Pages**, hosting + free HTTPS, custom domain support
-- **Mailchimp** (free tier), newsletter delivery via RSS-to-email — see
+- **Mailchimp** (free tier), newsletter delivery — the RSS automation
+  that would normally do this automatically doesn't work on the free
+  plan (it requires scheduling, which free doesn't include), so sending
+  is a one-command manual step after each post; see
   [Mailchimp setup](#mailchimp-setup) below
 - No comments anywhere, by design. If people want to respond, they can
   reply to the Beemail email.
@@ -113,8 +116,10 @@ every push).
    minute). No manual build step, no FTP, nothing else to do for the
    website side.
 
-That push is also everything you need to do to trigger the email send —
-see below.
+For the email: despite the Mailchimp setup below, the RSS automation
+doesn't actually send anything on the free plan — see "Sending an email
+manually" further down for the process that actually works
+(`make send-test` then `make send-live`, after this push).
 
 ## Repo setup / first deploy
 
@@ -241,21 +246,73 @@ quirk on this specific form type, and the field labels aren't editable
 to work around it by hand. Not worth fighting; a one-line note in the
 page's intro text ("only email is required") covers it if it matters.
 
-### Ongoing workflow (after setup)
+### The RSS automation doesn't actually work on the free plan
 
-1. Write the post in `_posts/`, as described above.
-2. `git push`.
-3. That's it. GitHub Pages publishes the page; Mailchimp picks up the new
-   `feed.xml` entry on its next poll and emails your Audience
-   automatically, using the template you built once.
+Found the hard way, on 2026-10-17: Mailchimp's free plan doesn't include
+**email scheduling** (confirmed on their own pricing page, and via the
+`send-checklist` API endpoint, which returns `"Because you're on a free
+plan, you won't be able to schedule this email."`). An RSS-to-email
+automation is inherently a scheduled/recurring send, so it's blocked by
+this — even though the setup flow above lets you configure and fully
+activate it with no warning anywhere in the UI. The automation sits
+correctly configured and perpetually does nothing.
 
-If you'd rather have full manual control over the email's exact wording
-(RSS campaigns auto-generate the email layout from your post content,
-which is usually fine but not infinitely flexible), the fallback is: write
-the post, push it, then manually create a regular Mailchimp campaign and
-paste the content in. That's more work per post, so start with the
-RSS-driven approach and only switch to manual if the auto-generated emails
-don't look right.
+Two ways forward: upgrade to a paid plan (Essentials, their cheapest
+paid tier, is $13/month at this contact count and includes scheduling —
+start the 14-day free trial and re-check `send-checklist` to confirm
+RSS sending actually unblocks before committing to pay), or use the
+manual-send process below, which works today on the free plan for free.
+The RSS automation can stay configured as-is either way — if you
+upgrade later, it should just start working with nothing else to change.
+
+### Sending an email manually (the part that actually works on free)
+
+The trick: Mailchimp's free-plan restriction is specifically on
+*scheduling* a send for later. An immediate "send now" isn't scheduling,
+so it isn't blocked (confirmed empirically — a real test send through
+the API succeeded and arrived normally).
+
+There's a local script, `scripts/send_beemail.py`, invoked via two
+`make` targets. **It's intentionally not part of this repo** — it's
+gitignored, since it's tied to this specific Mailchimp account (audience
+ID, from-address) rather than being general site tooling. It only
+exists on this machine; back it up somewhere yourself (e.g. a private
+repo or your own cloud storage) since losing it means rewriting it from
+this description.
+
+What it does: pulls the post's actual rendered content straight from the
+live `feed.xml` (so the email always matches what's really published,
+images and all), wraps it in a simple branded HTML template (not
+Mailchimp's own template system, to sidestep its unrelated
+`IFNOT:ARCHIVE_PAGE` template warning), creates a regular (non-RSS,
+non-scheduled) campaign, and sends it immediately.
+
+1. Write and push the post as normal (steps above) — **this script
+   requires the post to already be live**, since it reads from the real
+   feed.
+2. Send yourself a test first, always:
+   ```
+   make send-test POST=_posts/2026-11-02-fall-inspection.md
+   ```
+   This creates a draft campaign and emails only you
+   (`marshall.levin@gmail.com` by default; override with
+   `--test-email` if calling the script directly). Check formatting,
+   images, and every link before going further. The draft campaign is
+   left in Mailchimp for you to review or delete — it doesn't count
+   against the duplicate-send check below (only `sent`/`sending`
+   campaigns do).
+3. Once it looks right, send for real:
+   ```
+   make send-live POST=_posts/2026-11-02-fall-inspection.md
+   ```
+   This asks for a typed `SEND` confirmation before actually sending to
+   the full audience. It also refuses to run at all if a campaign with
+   that exact title (`Beemail: <post title>`) was already sent — cheap
+   protection against accidentally double-emailing the same post.
+
+The API key path defaults to `~/docs/hive490_mailchimp.txt` (outside
+the repo); override with the `MAILCHIMP_API_KEY_FILE` environment
+variable if it ever moves.
 
 ## Project structure
 

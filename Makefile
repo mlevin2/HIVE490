@@ -36,3 +36,9 @@ optimize-image:
 	magick "$(SRC)" -auto-orient -strip -resize '1600x1600>' -quality 82 "$(DEST)"
 	@echo "Wrote $(DEST):"
 	@du -h "$(DEST)"
+
+# Local-only targets (send-test, send-live) live in Makefile.local, which
+# is gitignored and silently skipped if it doesn't exist — see README's
+# "Sending an email manually" section for what they do and why they're
+# not part of the public repo.
+-include Makefile.local
