@@ -75,7 +75,7 @@ h1, h2, h3, h4 {
   min-width: 0;
 }
 
-.site-brand__logo { display: block; flex-shrink: 0; }
+.site-brand__logo { display: block; flex-shrink: 0; width: 72px; height: 72px; }
 
 .site-brand__text { display: flex; flex-direction: column; min-width: 0; }
 
@@ -344,12 +344,17 @@ h1, h2, h3, h4 {
 /* ---------- Small screens ---------- */
 
 @media (max-width: 540px) {
+  body { font-size: 1.05rem; }
   .site-header__inner { justify-content: center; text-align: center; }
-  .site-brand { flex-direction: column; text-align: center; max-width: 100%; }
+  .site-brand { flex-direction: column; text-align: center; max-width: 100%; gap: 0.5rem; }
+  .site-brand__logo { width: 52px; height: 52px; }
+  .site-brand__title { font-size: 1.5rem; }
+  .site-brand__tagline { font-size: 0.85rem; }
+  .page-title { font-size: 1.6rem; }
   .subscribe-row { flex-direction: column-reverse; align-items: center; }
   .subscribe-row__left { align-items: center; text-align: center; width: 100%; }
   .subscribe-banner { flex-direction: column; align-items: flex-start; width: 100%; }
-  .subscribe-row__logo { width: 150px; height: 150px; }
+  .subscribe-row__logo { width: 130px; height: 130px; }
 
   .post__content img.float-right,
   .post__content img.float-left {
