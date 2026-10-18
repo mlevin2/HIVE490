@@ -285,7 +285,8 @@ live `feed.xml` (so the email always matches what's really published,
 images and all), wraps it in a simple branded HTML template (not
 Mailchimp's own template system, to sidestep its unrelated
 `IFNOT:ARCHIVE_PAGE` template warning), creates a regular (non-RSS,
-non-scheduled) campaign, and sends it immediately.
+non-scheduled) campaign — using the post's `description` front matter
+as the inbox preview text — and sends it immediately.
 
 1. Write and push the post as normal (steps above) — **this script
    requires the post to already be live**, since it reads from the real
